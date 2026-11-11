@@ -817,30 +817,26 @@
 
       const WEBHOOK_URL = 'https://hook.eu1.make.com/e7dyfqaq8pdekkvbf0map6d4qcvpcwtv';
 
+      // Salviamo subito i dati nel sessionStorage
+      sessionStorage.setItem('lead_nome', formData.nome);
+      sessionStorage.setItem('lead_email', formData.email);
+      sessionStorage.setItem('lead_telefono', formData.telefono);
+      sessionStorage.setItem('lead_zona', formData.zona);
+      sessionStorage.setItem('lead_motivo', formData.motivo);
+
       try {
-        const response = await fetch(WEBHOOK_URL, {
+        await fetch(WEBHOOK_URL, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'text/plain;charset=utf-8',
           },
-          body: JSON.stringify(formData)
+          body: JSON.stringify(formData),
+          keepalive: true
         });
-
-        sessionStorage.setItem('lead_nome', formData.nome);
-        sessionStorage.setItem('lead_email', formData.email);
-        sessionStorage.setItem('lead_telefono', formData.telefono);
-        sessionStorage.setItem('lead_zona', formData.zona);
-        sessionStorage.setItem('lead_motivo', formData.motivo);
-
-        window.location.replace('thank_you_page.html');
       } catch (error) {
         console.error('Errore webhook:', error);
-        window.location.replace('thank_you_page.html');
       } finally {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalBtnText;
-        }
+        window.location.replace('thank_you_page.html');
       }
     }
   </script>
