@@ -803,11 +803,14 @@
         `;
       }
 
+      const motivoSelezionato = document.querySelector('input[name="motivoVendita"]:checked');
+
       const formData = {
         nome: document.getElementById('fullName').value.trim(),
         email: document.getElementById('email').value.trim(),
         telefono: document.getElementById('phone').value.trim(),
         zona: document.getElementById('comune').value || 'Catania e Provincia',
+        motivo: motivoSelezionato ? motivoSelezionato.value : 'Non specificato',
         timestamp: new Date().toISOString(),
         fonte: 'Landing Page Dossier'
       };
@@ -827,6 +830,7 @@
         sessionStorage.setItem('lead_email', formData.email);
         sessionStorage.setItem('lead_telefono', formData.telefono);
         sessionStorage.setItem('lead_zona', formData.zona);
+        sessionStorage.setItem('lead_motivo', formData.motivo);
 
         window.location.replace('thank_you_page.html');
       } catch (error) {
