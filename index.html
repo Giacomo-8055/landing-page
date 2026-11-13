@@ -823,6 +823,7 @@
         email: document.getElementById('email').value.trim(),
         telefono: document.getElementById('phone').value.trim(),
         zona: document.getElementById('comune').value || 'Catania e Provincia',
+        urgenza: document.getElementById('urgenza').value || 'Non specificata',
         motivo: motivoSelezionato ? motivoSelezionato.value : 'Non specificato',
         timestamp: new Date().toISOString(),
         fonte: 'Landing Page Dossier'
@@ -835,6 +836,7 @@
       sessionStorage.setItem('lead_email', formData.email);
       sessionStorage.setItem('lead_telefono', formData.telefono);
       sessionStorage.setItem('lead_zona', formData.zona);
+      sessionStorage.setItem('lead_urgenza', formData.urgenza);
       sessionStorage.setItem('lead_motivo', formData.motivo);
 
       try {
