@@ -435,9 +435,8 @@
 
       const whatsappNumber = '393758256461';
       const testoMessaggio = nome
-        ? `Buongiorno, sono ${nome}. Ho appena richiesto il Protocollo Operativo (Dossier Vendita Sicura) per un immobile in zona ${zona} (situazione: ${motivo}, tempistica: ${urgenza}) e vorrei concordare il Confronto Preliminare di Allineamento.`
-        : `Buongiorno, ho appena richiesto il Protocollo Operativo (Dossier Vendita Sicura) e vorrei concordare il Confronto Preliminare di Allineamento per la vendita di un immobile.`;
-
+        ? `Buongiorno, sono ${nome}. Ho appena ricevuto il Dossier Vendita Sicura per un immobile in zona ${zona} (${motivo}, tempistica: ${urgenza}) e vorrei fissare i 15 minuti di confronto telefonico per verificare insieme se ci sono i presupposti per procedere.`
+        : `Buongiorno, ho appena ricevuto il Dossier Vendita Sicura sul vostro sito e vorrei fissare i 15 minuti di confronto telefonico per verificare insieme la situazione del mio immobile.`;
       const waBtn = document.getElementById('whatsappDirectBtn');
       if (waBtn) {
         waBtn.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(testoMessaggio)}`;
